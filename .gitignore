@@ -1,4 +1,0 @@
-node_modules/
-.env
-donations.db
-session_db.json

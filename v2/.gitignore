@@ -1,0 +1,10 @@
+# Dependencies
+node_modules/
+
+# Environment secrets — NEVER commit this
+.env
+
+# Bot data
+receipts/
+traces/
+user_session/

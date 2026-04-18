@@ -1,0 +1,174 @@
+═══════════════════════════════════════════════════════════════════════════
+  DONATION RECEIPT BOT - UPDATED COORDINATOR GUIDE
+═══════════════════════════════════════════════════════════════════════════
+
+📋 REQUIRED MESSAGE FORMAT:
+───────────────────────────────────────────────────────────────────────────
+
+Line 1: Donor Name (any language)
+Line 2: Place/Location (any language)
+Line 3: Amount with Currency (e.g., "1000 rs" or "1000 INR")
+Line 4: C/o (Care Of) - Optional (e.g., "C/o - صالح الهديوي")
+Line 5: Phone Number (e.g., "+919446197258" or "9446197258")
+
+───────────────────────────────────────────────────────────────────────────
+
+✅ EXAMPLE (Malayalam):
+───────────────────────────────────────────────────────────────────────────
+ശൗകത്ത് വാക്കയിൽ
+ഇരിങ്ങാട്ടിരി
+1000 rs
+C/o - സാലിം ഹുദവി
++919446197258
+
+───────────────────────────────────────────────────────────────────────────
+
+✅ EXAMPLE (English):
+───────────────────────────────────────────────────────────────────────────
+John Doe
+Dubai
+5000 AED
+C/o Ahmed Khan
++971501234567
+
+───────────────────────────────────────────────────────────────────────────
+
+💰 SUPPORTED CURRENCIES & FORMATS:
+───────────────────────────────────────────────────────────────────────────
+
+INDIAN RUPEE:
+  ✓ "1000 rs"
+  ✓ "1000 RS"
+  ✓ "1000 INR"
+  ✓ "1000 rupees"
+  ✓ "10000 രൂപ" (Malayalam)
+  ✓ "₹ 1000"
+
+UAE DIRHAM:
+  ✓ "5000 aed"
+  ✓ "5000 dirham"
+
+SAUDI RIYAL:
+  ✓ "5000 sar"
+  ✓ "5000 riyal"
+
+KUWAITI DINAR:
+  ✓ "500 kwd"
+  ✓ "500 dinar"
+
+BAHRAINI DINAR:
+  ✓ "500 bhd"
+  ✓ "500 baisa"
+
+OMANI RIAL:
+  ✓ "500 omr"
+  ✓ "500 rial"
+
+QATARI RIYAL:
+  ✓ "1000 qar"
+  ✓ "1000 qatari"
+
+POUND STERLING:
+  ✓ "150.50 GBP"
+  ✓ "150.50 pounds"
+
+EUROS:
+  ✓ "150 EUR"
+  ✓ "150 euros"
+
+CANADIAN DOLLAR:
+  ✓ "200 CAD"
+  ✓ "200 canadian"
+
+AUSTRALIAN DOLLAR:
+  ✓ "200 AUD"
+  ✓ "200 australian"
+
+US DOLLAR:
+  ✓ "$ 100"
+  ✓ "100 USD"
+  ✓ "100 dollars"
+
+───────────────────────────────────────────────────────────────────────────
+
+📞 PHONE NUMBER FORMATS:
+───────────────────────────────────────────────────────────────────────────
+
+The bot now intelligently handles:
+
+✓ With Plus & Country Code: "+919446197258"
+✓ With Plus & Spaces: "+91 944 619 7258"
+✓ With Plus & Dashes: "+91-944-619-7258"
+✓ With Country Code: "919446197258"
+✓ Local 10-digits: "9446197258"
+
+ALL THESE WORK! ✓
+
+───────────────────────────────────────────────────────────────────────────
+
+❌ WHAT THE BOT FIXED:
+───────────────────────────────────────────────────────────────────────────
+
+BEFORE:
+  Name: ശൗകത്ത് വാക്കയിൽ
+  Place: ഇരിങ്ങാട്ടിരി
+  Amount: 919446197258 ❌ (WRONG - took phone number!)
+  Phone: +919446197258
+
+AFTER (NEW):
+  Name: ശൗകത്ത് വാക്കയിൽ
+  Place: ഇരിങ്ങാട്ടിരി
+  Amount: 1000 ✅ (CORRECT)
+  Currency: ₹ INR ✅ (auto-detected from "rs")
+  Phone: +919446197258 ✅
+
+───────────────────────────────────────────────────────────────────────────
+
+🔍 KEY IMPROVEMENTS:
+───────────────────────────────────────────────────────────────────────────
+
+1. ✅ Amount ONLY extracted when paired with currency keyword
+   - "1000 rs" → Amount: 1000, Currency: INR ✅
+   - "1000" alone → NOT extracted as amount ❌
+
+2. ✅ Phone detection prioritizes:
+   - Numbers with "+" prefix
+   - Country codes (91, 971, etc.)
+   - 10-digit local numbers
+
+3. ✅ Currency auto-detection:
+   - "rs" → ₹ INR
+   - "aed" → إ.د AED
+   - "gbp" → £ GBP
+   - etc.
+
+4. ✅ Handles Spaces in Phone:
+   - "+91 944 619 7258" → "+919446197258" ✅
+
+5. ✅ Supports Decimals:
+   - "150.50 gbp" → Amount: 150.50, Currency: £ GBP ✅
+
+───────────────────────────────────────────────────────────────────────────
+
+⚠️ IMPORTANT NOTES:
+───────────────────────────────────────────────────────────────────────────
+
+✓ Names & Places can be in ANY language (Malayalam, Arabic, English, etc.)
+✓ Currency keywords are CASE INSENSITIVE ("Rs", "RS", "rs" all work)
+✓ C/o line is OPTIONAL
+✓ Always include the "+" with country code for international numbers
+✓ Spaces in phone numbers are automatically handled
+
+───────────────────────────────────────────────────────────────────────────
+
+🧪 TESTED SCENARIOS (All Passing ✅):
+───────────────────────────────────────────────────────────────────────────
+
+✅ Malayalam with RS
+✅ English with INR
+✅ UAE (AED) with spaces in phone number
+✅ US Dollar ($) amount
+✅ Local 10-digit phone numbers (9876543210)
+✅ Decimal amounts (150.50 GBP)
+
+═══════════════════════════════════════════════════════════════════════════
